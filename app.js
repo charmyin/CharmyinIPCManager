@@ -9,7 +9,6 @@ var express = require('express')
   , gpio = require('./routes/gpio')
   , image = require('./routes/image')
   , dirList = require('./routes/dirList')
-  , directory = require('./models/directory')
   , http = require('http')
   , path = require('path');
 
@@ -38,7 +37,7 @@ app.get('/image/showImg', image.showImg);
 app.get('/ipcs/dirList', dirList.dirList);
 app.get('/ipcs/dirList/imgView', dirList.imgView);
 app.get('/ipcs/dirList/dirListJson', dirList.dirListJson);
-
+app.get('/ipcs/dirList/imgListJson', dirList.imgListJson);
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));
