@@ -38,6 +38,8 @@ app.get('/ipcs/dirList', dirList.dirList);
 app.get('/ipcs/dirList/imgView', dirList.imgView);
 app.get('/ipcs/dirList/dirListJson', dirList.dirListJson);
 app.get('/ipcs/dirList/imgListJson', dirList.imgListJson);
+app.get('/ipcs/dirList/devListJson', routes.devListJson);
+
 
 http.createServer(app).listen(app.get('port'), function(){
   console.log('Express server listening on port ' + app.get('port'));

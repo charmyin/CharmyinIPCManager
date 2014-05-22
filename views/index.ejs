@@ -29,15 +29,29 @@
 
       <script type="text/javascript">
           $(function(){
-            $("tr").click(function(){
-                window.location="/ipcs/dirList";
-            });
-            $("tr button").click(function(event){
-                event.stopPropagation();
-                event.preventDefault();
-                alert("TR Button click has been clicked!");
-            });
 
+
+              var addListItem = function(data){
+                  var items='';
+                  for(var i=0; i<data.length; i++){
+                      items += '<tr><td>'+i+'</td><td>'+data[i].ipAddressShort+'</td><td>'+data[i].name+'</td><td>在线/拍摄中</td><td><button type="button" class="btn btn-danger btn-xs">停止</button></td></tr>';
+                  }
+                  $(items).appendTo("#devListTable");
+              };
+
+              $.ajax("/ipcs/dirList/devListJson").done(function(data){
+                  addListItem(data);
+                  $("tr").click(function(){
+                      var ipshort = $(this).find("td:eq(1)").text();
+                      window.location="/ipcs/dirList?devDirName="+ipshort;
+
+                  });
+                  $("tr button").click(function(event){
+                      event.stopPropagation();
+                      event.preventDefault();
+                      alert("TR Button click has been clicked!");
+                  });
+              });
           });
 
       </script>
@@ -49,7 +63,7 @@
           <div class="panel-heading">设备列表</div>
           <div class="panel-body">
               <!-- Device list -->
-              <table class="table  table-hover table-striped"  style="margin-bottom: 0; text-align: center;">
+              <table id="devListTable" class="table  table-hover table-striped"  style="margin-bottom: 0; text-align: center;">
                   <tr>
                       <th></th>
                       <th>IP地址</td>
@@ -57,15 +71,7 @@
                       <th>设备/缩拍</th>
                       <th>操作</th>
                   </tr>
-                  <tr>
-                      <td>1</td>
-                      <td>111</td>
-                      <td>西瓜</td>
-                      <td>在线/拍摄中</td>
-                      <td>
-                          <button type="button" class="btn btn-danger btn-xs">停止</button>
-                      </td>
-                  </tr>
+                  <!--
                   <tr>
                       <td>2</td>
                       <td>112</td>
@@ -74,25 +80,8 @@
                       <td>
                           <button type="button" class="btn btn-danger btn-xs">停止</button>
                       </td>
-                  </tr>
-                  <tr>
-                      <td>3</td>
-                      <td>113</td>
-                      <td>葡萄</td>
-                      <td>在线/已停止</td>
-                      <td>
-                          <button type="button" class="btn btn-success btn-xs">启动</button>
-                      </td>
-                  </tr>
-                  <tr>
-                      <td>4</td>
-                      <td>114</td>
-                      <td>香蕉</td>
-                      <td>离线/已停止</td>
-                      <td>
-                          <button type="button" class="btn btn-success btn-xs">启动</button>
-                      </td>
-                  </tr>
+                  </tr>-->
+
               </table>
 
           </div>

@@ -4,9 +4,11 @@
  */
 var fs = require('fs');
 exports.showImg = function(req, res){
-    var count=req.param('count');
-    console.log("---------------------------------++++++++++++++++++++++++++++++++\n");
-    var imgPath = '/home/cubie/apps/timelapse/usb/cmfswebcam/img'+count+'.jpg';
+    var devDirName=req.param('devDirName');
+    var dateDirName=req.param('dateDirName');
+    var fileName=req.param('fileName');
+
+    var imgPath = '/home/media/dkapm1/'+ devDirName +'/'+dateDirName+'/'+fileName;
     console.log(imgPath);
     var img = fs.readFileSync(imgPath);
     res.writeHead(200, {'Content-Type': 'image/jpeg' });

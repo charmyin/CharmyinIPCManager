@@ -36,10 +36,10 @@
               $(items).appendTo("#dirListTable");
           };
           $(function(){
-            $.ajax("/ipcs/dirList/dirListJson").done(function(data){
+            $.ajax("/ipcs/dirList/dirListJson?devDirName=<%= devDirName %>").done(function(data){
                 addListItem(data);
                 $("tr").click(function(){
-                    window.location="/ipcs/dirList/imgView";
+                    window.location="/ipcs/dirList/imgView?devDirName=<%= devDirName %>"+"&dateDirName="+$(this).find("td:eq(1)").text();
                 });
             });
           });
@@ -54,7 +54,7 @@
               <!--Navi menu-->
               <ol class="breadcrumb" style="margin-bottom: 0; ">
                   <li><a href="/">设备列表</a></li>
-                  <li class="active">设备</li>
+                  <li class="active"><%= devDirName %></li>
               </ol>
           </div>
           <div class="panel-body">

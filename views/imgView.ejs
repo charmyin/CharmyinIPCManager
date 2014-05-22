@@ -35,21 +35,19 @@
 
             var addListItem = function(data){
                 var items='';
-                for(var i=0; i<data.length; i++){
-                    items += '<div class="col-xs-6 col-md-4"><div class="thumbnail"><img src="'+data[i].name+'" id="firstImage" data-toggle="modal" data-target="#myModal" alt="图片" class="img-rounded img-responsive"><p style="text-align: center;margin-bottom:0;"><span class="label label-default">'+data[i].name+(data[i].createTime)+'</span></p></div></div>';
+                for(var i=0; i<data.length; i++) {
+
+                        items += '<div class="row"><div class="col-xs-1 col-md-1"></div><div class="col-xs-10 col-md-10"><div class="thumbnail"><img src="/image/showImg?devDirName=<%= devDirName %>&dateDirName=<%= dateDirName %>&fileName=' + data[i].name + '" id="firstImage" data-toggle="modal" data-target="#myModal" alt="图片" class="img-rounded img-responsive"><p style="text-align: center;margin-bottom:0;"><span class="label label-default">' + data[i].name + '(' + (data[i].createTime) + ')</span></p></div></div><div class="col-xs-1 col-md-1"></div></div>';
+
                 }
-                $(items).appendTo("#imgRow");
+                $(items).appendTo("#panelBody");
             };
 
             $(function(){
                 $("tr").click(function(){
                     alert("TR click has been clicked!");
                 });
-                $("tr button").click(function(event){
-                    event.stopPropagation();
-                    event.preventDefault();
-                    alert("TR Button click has been clicked!");
-                });
+
 
                 $('#myModal').on('hidden.bs.modal', function (e) {
 
@@ -59,18 +57,16 @@
                     var target = event.target || event.srcElement;
                     var targetId = target.id;
                     var fileName = $(target).next().find("span").text();
-                    $("#myModalLabel").text(fileName);
+                    $("#myModalLabel").text(fileName.split("(")[0]);
+                    $("#modalImgSrc").attr("src", $(target).attr("src"))
                 })
 
                 $("#closeModal").click(function(){
                     $("#myModal").hide();
                 });
 
-                $.ajax("/ipcs/dirList/imgListJson").done(function(data){
+                $.ajax("/ipcs/dirList/imgListJson?devDirName=<%= devDirName %>"+"&dateDirName=<%= dateDirName %>").done(function(data){
                     addListItem(data);
-                    $("tr").click(function(){
-                        window.location="/ipcs/dirList/imgView";
-                    });
                 });
 
             });
@@ -85,76 +81,34 @@
             <!--Navi menu-->
             <ol class="breadcrumb" style="margin-bottom: 0; ">
                 <li><a href="/">设备列表</a></li>
-                <li><a href="/ipcs/dirList">设备</a></li>
+                <li><a href="/ipcs/dirList?devDirName=<%= devDirName %>"><%= devDirName %></a></li>
                 <li class="active">照片列表</li>
             </ol>
         </div>
-        <div class="panel-body">
-            <div class="row">
-                <div class="col-xs-1 col-md-1">
-                </div>
-                <div class="col-xs-10 col-md-10">
-                    <div class="thumbnail">
-                        <img src="/image/showImg?count=1" id="firstImage" data-toggle="modal" data-target="#myModal" alt="图片" class="img-rounded img-responsive">
-                        <p style="text-align: center;margin-bottom:0;">
-                            <span class="label label-default">2014-5-21 14:38:11</span>
-                        </p>
-                    </div>
-                </div>
-                <div class="col-xs-1 col-md-1">
-                </div>
-            </div>
-                <div class="row" id="imgRow">
+        <div class="panel-body" id="panelBody">
 
-                    <div class="col-xs-6 col-md-4">
-                        <div class="thumbnail">
-                            <img src="/image/showImg?count=2" alt="图片" class="img-rounded img-responsive">
-                            <p style="text-align: center;margin-bottom:0;">
-                                <span class="label label-default">2014-5-21 14:38:11</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class=" col-xs-6 col-md-4">
-                        <div class="thumbnail">
-                            <img src="/image/showImg?count=3" alt="图片" class="img-rounded img-responsive">
-                            <p style="text-align: center;margin-bottom:0;">
-                                <span class="label label-default">2014-5-21 14:38:11</span>
-                            </p>
-                        </div>
-                    </div>
-                    <div class="col-xs-6 col-md-4">
-                        <div class="thumbnail">
-                            <img src="/image/showImg?count=4" alt="图片" class="img-rounded img-responsive">
-                            <p style="text-align: center;margin-bottom:0;">
-                                <span class="label label-default">2014-5-21 14:38:11</span>
-                            </p>
-                        </div>
-                    </div>
+            <!-- <div class="col-xs-12 col-md-8">
+                 <div class="thumbnail">
+                     <div class="row">
+                         <div class="col-xs-2 col-md-3">
 
+                         </div>
+                         <div class="col-xs-4 col-md-2">
+                             <button type="button" class="btn btn-warning" disabled="disabled" style="color:mediumblue">第1页/共22页</button>
+                         </div>
+                         <div class="col-xs-3 col-md-2">
+                             <input type="text" class="form-control" placeholder=".col-xs-2">
+                         </div>
+                         <div class="col-xs-1 col-md-2">
+                             <button type="button" class="btn btn-primary btn-sm">跳转</button>
+                         </div>
+                         <div class="col-xs-2 col-md-3">
 
-                   <!-- <div class="col-xs-12 col-md-8">
-                        <div class="thumbnail">
-                            <div class="row">
-                                <div class="col-xs-2 col-md-3">
+                         </div>
+                     </div>
+                 </div>
+             </div>-->
 
-                                </div>
-                                <div class="col-xs-4 col-md-2">
-                                    <button type="button" class="btn btn-warning" disabled="disabled" style="color:mediumblue">第1页/共22页</button>
-                                </div>
-                                <div class="col-xs-3 col-md-2">
-                                    <input type="text" class="form-control" placeholder=".col-xs-2">
-                                </div>
-                                <div class="col-xs-1 col-md-2">
-                                    <button type="button" class="btn btn-primary btn-sm">跳转</button>
-                                </div>
-                                <div class="col-xs-2 col-md-3">
-
-                                </div>
-                            </div>
-                        </div>
-                    </div>-->
-
-                </div>
         </div>
     </div>
 
@@ -167,7 +121,7 @@
                     <h4 class="modal-title" style="display: inline;" id="myModalLabel"></h4>
                 </div>
                 <div class="modal-body">
-                    <img src="/image/showImg?count=4" alt="图片" class="img-rounded img-responsive">
+                    <img src="" id="modalImgSrc" alt="图片" class="img-rounded img-responsive">
                 </div>
             </div>
         </div>
