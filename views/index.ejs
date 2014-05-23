@@ -28,15 +28,67 @@
       <script type="text/javascript" src="/vendors/bootstrap-3.1.1/js/bootstrap.min.js"></script>
 
       <script type="text/javascript">
-          $(function(){
 
+          function stopIPC(id){
+              event.stopPropagation();
+              event.preventDefault();
+              //停用ipc by id
+              $.ajax("/ipcs/dirList/stopIPC?shortIPAddress="+id).done(function(data){
+                  location.reload();
+              });
+
+          }
+
+          function startIPC(id){
+              event.stopPropagation();
+              event.preventDefault();
+              //启用ipc by id 拍摄
+              $.ajax("/ipcs/dirList/startIPC?shortIPAddress="+id).done(function(data){
+                  location.reload();
+              });
+
+          }
+
+
+          $(function(){
 
               var addListItem = function(data){
                   var items='';
                   for(var i=0; i<data.length; i++){
-                      items += '<tr><td>'+i+'</td><td>'+data[i].ipAddressShort+'</td><td>'+data[i].name+'</td><td>在线/拍摄中</td><td><button type="button" class="btn btn-danger btn-xs">停止</button></td></tr>';
+                      items += '<tr><td>'+(i+1)+'</td><td>'+data[i].ipAddressShort+'</td><td>'+data[i].name+'</td><td><strong id="tdOnline'+data[i].ipAddressShort+'"></strong>/<strong id="tdOnWork'+data[i].ipAddressShort+'"></strong></td><td id="operateBtn'+data[i].ipAddressShort+'"></td></tr>';
                   }
                   $(items).appendTo("#devListTable");
+              };
+
+              var changeOnlineState = function(data){
+                  for(var i=0; i<data.length; i++){
+                      var isOnlineString = "离线";
+
+                      if(eval(data[i].isOnline)){
+                          isOnlineString = "在线";
+                          $("button").show();
+                      }else{
+                          $("button").hide();
+                      }
+
+                      $("#tdOnline"+data[i].ipAddress.split(".")[3]).html(isOnlineString);
+                  }
+              };
+
+              var changeOnWorkState = function(data){
+
+                  for(var i=0; i<data.length; i++){
+                      var isOnWorkString = "未拍摄";
+                      $("#operateBtn"+data[i].ipAddressShort).html('<button type="button" class="btn btn-info btn-xs" onclick="javascript:startIPC('+data[i].ipAddressShort+');">开始</button>');
+
+                      if(eval(data[i].isShooting)){
+                          isOnWorkString = "拍摄中";
+                          $("#operateBtn"+data[i].ipAddressShort).html('<button type="button" class="btn btn-danger btn-xs" onclick="javascript:stopIPC('+data[i].ipAddressShort+');">停止</button>');
+                      }
+                      $("#tdOnWork"+data[i].ipAddressShort).html(isOnWorkString);
+                      $("button").hide();
+                  }
+
               };
 
               $.ajax("/ipcs/dirList/devListJson").done(function(data){
@@ -46,13 +98,26 @@
                       window.location="/ipcs/dirList?devDirName="+ipshort;
 
                   });
-                  $("tr button").click(function(event){
+                  /*$("tr button").click(function(event){
                       event.stopPropagation();
                       event.preventDefault();
                       alert("TR Button click has been clicked!");
-                  });
+                  });*/
               });
+
+              //ipc在线状态
+              $.ajax("/ipcs/dirList/devOnlineListJson").done(function(data){
+                  changeOnlineState(data);
+               });
+
+              //ipc拍照状态
+              $.ajax("/ipcs/dirList/appWorkingStatusJson").done(function(data){
+                  changeOnWorkState(data);
+              });
+
+
           });
+
 
       </script>
   </head>

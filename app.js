@@ -9,6 +9,7 @@ var express = require('express')
   , gpio = require('./routes/gpio')
   , image = require('./routes/image')
   , dirList = require('./routes/dirList')
+  , device = require('./routes/device')
   , http = require('http')
   , path = require('path');
 
@@ -39,6 +40,10 @@ app.get('/ipcs/dirList/imgView', dirList.imgView);
 app.get('/ipcs/dirList/dirListJson', dirList.dirListJson);
 app.get('/ipcs/dirList/imgListJson', dirList.imgListJson);
 app.get('/ipcs/dirList/devListJson', routes.devListJson);
+app.get('/ipcs/dirList/devOnlineListJson', device.devOnlineListJson);
+app.get('/ipcs/dirList/appWorkingStatusJson', device.appWorkingStatusJson);
+app.get('/ipcs/dirList/stopIPC', device.stopIPC);
+app.get('/ipcs/dirList/startIPC', device.startIPC);
 
 
 http.createServer(app).listen(app.get('port'), function(){

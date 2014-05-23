@@ -20,14 +20,13 @@ exports.devListJson = function(req, res){
             }
             var stdoutArray = stdout.split("\n");
             var responseDeviceArray=[];
-            for(var i=1; i<stdoutArray.length-1; i++){
+            for(var i=0; i<stdoutArray.length-1; i++){
                 var tempStdoutArray = stdoutArray[i].split(";");
                 var devTemp = new device.Device();
                 devTemp.ipAddressShort=tempStdoutArray[0];
                 devTemp.name=tempStdoutArray[2];
                 devTemp.shootInterval=tempStdoutArray[3];
                 responseDeviceArray.push(devTemp);
-                console.log(stdoutArray[i]);
             }
             res.json(responseDeviceArray);
         });
