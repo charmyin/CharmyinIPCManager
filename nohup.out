@@ -1,0 +1,109 @@
+
+Running node-supervisor with
+  program 'app.js'
+  --watch '.'
+  --extensions 'node,js'
+  --exec 'node'
+
+Starting child process with 'node app.js'
+Watching directory '/home/cubie/apps/nodejs/express/charmyin' for changes.
+Express server listening on port 3000
+[90mGET / [36m304 [90m455ms[0m
+[90mGET /vendors/bootstrap-3.1.1/css/bootstrap.min.css [36m304 [90m79ms[0m
+[90mGET /js/jquery/jquery-1.9.0.js [36m304 [90m60ms[0m
+[90mGET /vendors/bootstrap-3.1.1/js/bootstrap.min.js [36m304 [90m8ms[0m
+[90mGET /ipcs/dirList/devListJson [32m200 [90m296ms - 590b[0m
+[90mGET /ipcs/dirList/appWorkingStatusJson [32m200 [90m401ms - 254b[0m
+[90mGET /ipcs/dirList/devOnlineListJson [32m200 [90m12348ms - 274b[0m
+~~~~~~~~~~~~~~~~~~~~~~~~15
+[90mGET /ipcs/dirList?devDirName=15 [32m200 [90m100ms - 3.77kb[0m
+[90mGET /vendors/bootstrap-3.1.1/css/bootstrap.min.css [36m304 [90m24ms[0m
+[90mGET /js/jquery/jquery-1.9.0.js [36m304 [90m14ms[0m
+[90mGET /vendors/bootstrap-3.1.1/js/bootstrap.min.js [36m304 [90m20ms[0m
+2014-05-22 16:46:34.805603747 20140522-164352
+2014-05-22 14:43:40.295600230 20140522-14:36:53
+[90mGET /ipcs/dirList/dirListJson?devDirName=15 [32m200 [90m62ms - 204b[0m
+[90mGET /ipcs/dirList/imgView?devDirName=15&dateDirName=20140522-164352 [32m200 [90m98ms - 6.2kb[0m
+[90mGET /vendors/bootstrap-3.1.1/css/bootstrap.min.css [36m304 [90m21ms[0m
+[90mGET /js/jquery/jquery-1.9.0.js [36m304 [90m12ms[0m
+[90mGET /vendors/bootstrap-3.1.1/js/bootstrap.min.js [36m304 [90m25ms[0m
+2014-05-22 16:46:34.805603747 000060.jpg
+2014-05-22 16:46:34.765603747 000059.jpg
+2014-05-22 16:46:23.075603741 000058.jpg
+2014-05-22 16:46:20.685603740 000057.jpg
+2014-05-22 16:46:18.285603740 000056.jpg
+[90mGET /ipcs/dirList/imgListJson?devDirName=15&dateDirName=20140522-164352 [32m200 [90m95ms - 377b[0m
+/home/media/dkapm1/15/20140522-164352/000060.jpg
+[90mGET /image/showImg?devDirName=15&dateDirName=20140522-164352&fileName=000060.jpg [32m200 [90m22ms[0m
+/home/media/dkapm1/15/20140522-164352/000059.jpg
+[90mGET /image/showImg?devDirName=15&dateDirName=20140522-164352&fileName=000059.jpg [32m200 [90m11ms[0m
+/home/media/dkapm1/15/20140522-164352/000058.jpg
+[90mGET /image/showImg?devDirName=15&dateDirName=20140522-164352&fileName=000058.jpg [32m200 [90m9ms[0m
+/home/media/dkapm1/15/20140522-164352/000057.jpg
+[90mGET /image/showImg?devDirName=15&dateDirName=20140522-164352&fileName=000057.jpg [32m200 [90m9ms[0m
+/home/media/dkapm1/15/20140522-164352/000056.jpg
+[90mGET /image/showImg?devDirName=15&dateDirName=20140522-164352&fileName=000056.jpg [32m200 [90m9ms[0m
+[90mGET / [36m304 [90m371ms[0m
+[90mGET /vendors/bootstrap-3.1.1/css/bootstrap.min.css [36m304 [90m30ms[0m
+[90mGET /js/jquery/jquery-1.9.0.js [36m304 [90m22ms[0m
+[90mGET /vendors/bootstrap-3.1.1/js/bootstrap.min.js [36m304 [90m21ms[0m
+[90mGET /ipcs/dirList/devListJson [32m200 [90m151ms - 590b[0m
+[90mGET /ipcs/dirList/appWorkingStatusJson [32m200 [90m379ms - 254b[0m
+[90mGET /ipcs/dirList/devOnlineListJson [32m200 [90m12384ms - 274b[0m
+[90mGET / [36m304 [90m82ms[0m
+[90mGET /vendors/bootstrap-3.1.1/css/bootstrap.min.css [36m304 [90m7ms[0m
+[90mGET /js/jquery/jquery-1.9.0.js [36m304 [90m5ms[0m
+[90mGET /vendors/bootstrap-3.1.1/js/bootstrap.min.js [36m304 [90m6ms[0m
+[90mGET /ipcs/dirList/devListJson [32m200 [90m77ms - 590b[0m
+[90mGET /ipcs/dirList/appWorkingStatusJson [32m200 [90m340ms - 254b[0m
+[90mGET / [36m304 [90m56ms[0m
+[90mGET /vendors/bootstrap-3.1.1/css/bootstrap.min.css [36m304 [90m20ms[0m
+[90mGET /js/jquery/jquery-1.9.0.js [36m304 [90m15ms[0m
+[90mGET /vendors/bootstrap-3.1.1/js/bootstrap.min.js [36m304 [90m12ms[0m
+[90mGET /ipcs/dirList/devListJson [32m200 [90m119ms - 590b[0m
+[90mGET /ipcs/dirList/appWorkingStatusJson [32m200 [90m368ms - 254b[0m
+[90mGET / [36m304 [90m39ms[0m
+[90mGET /vendors/bootstrap-3.1.1/css/bootstrap.min.css [36m304 [90m16ms[0m
+[90mGET /js/jquery/jquery-1.9.0.js [36m304 [90m14ms[0m
+[90mGET /vendors/bootstrap-3.1.1/js/bootstrap.min.js [36m304 [90m14ms[0m
+[90mGET /ipcs/dirList/devListJson [32m200 [90m90ms - 590b[0m
+[90mGET /ipcs/dirList/appWorkingStatusJson [32m200 [90m336ms - 254b[0m
+[90mGET / [36m304 [90m37ms[0m
+[90mGET /vendors/bootstrap-3.1.1/css/bootstrap.min.css [36m304 [90m21ms[0m
+[90mGET /js/jquery/jquery-1.9.0.js [36m304 [90m18ms[0m
+[90mGET /vendors/bootstrap-3.1.1/js/bootstrap.min.js [36m304 [90m17ms[0m
+[90mGET /ipcs/dirList/devOnlineListJson [32m200 [90m14762ms - 274b[0m
+[90mGET /ipcs/dirList/devListJson [32m200 [90m104ms - 590b[0m
+[90mGET /ipcs/dirList/appWorkingStatusJson [32m200 [90m336ms - 254b[0m
+~~~~~~~~~~~~~~~~~~~~~~~~15
+[90mGET /ipcs/dirList?devDirName=15 [36m304 [90m32ms[0m
+[90mGET /vendors/bootstrap-3.1.1/css/bootstrap.min.css [36m304 [90m18ms[0m
+[90mGET /js/jquery/jquery-1.9.0.js [36m304 [90m32ms[0m
+[90mGET /vendors/bootstrap-3.1.1/js/bootstrap.min.js [36m304 [90m30ms[0m
+2014-05-22 16:46:34.805603747 20140522-164352
+2014-05-22 14:43:40.295600230 20140522-14:36:53
+[90mGET /ipcs/dirList/dirListJson?devDirName=15 [32m200 [90m60ms - 204b[0m
+[90mGET /ipcs/dirList/imgView?devDirName=15&dateDirName=20140522-164352 [32m200 [90m122ms - 6.2kb[0m
+[90mGET /vendors/bootstrap-3.1.1/css/bootstrap.min.css [36m304 [90m20ms[0m
+[90mGET /js/jquery/jquery-1.9.0.js [36m304 [90m19ms[0m
+[90mGET /vendors/bootstrap-3.1.1/js/bootstrap.min.js [36m304 [90m12ms[0m
+2014-05-22 16:46:34.805603747 000060.jpg
+2014-05-22 16:46:34.765603747 000059.jpg
+2014-05-22 16:46:23.075603741 000058.jpg
+2014-05-22 16:46:20.685603740 000057.jpg
+2014-05-22 16:46:18.285603740 000056.jpg
+[90mGET /ipcs/dirList/imgListJson?devDirName=15&dateDirName=20140522-164352 [32m200 [90m83ms - 377b[0m
+/home/media/dkapm1/15/20140522-164352/000060.jpg
+[90mGET /image/showImg?devDirName=15&dateDirName=20140522-164352&fileName=000060.jpg [32m200 [90m9ms[0m
+/home/media/dkapm1/15/20140522-164352/000059.jpg
+[90mGET /image/showImg?devDirName=15&dateDirName=20140522-164352&fileName=000059.jpg [32m200 [90m5ms[0m
+/home/media/dkapm1/15/20140522-164352/000058.jpg
+[90mGET /image/showImg?devDirName=15&dateDirName=20140522-164352&fileName=000058.jpg [32m200 [90m4ms[0m
+/home/media/dkapm1/15/20140522-164352/000057.jpg
+[90mGET /image/showImg?devDirName=15&dateDirName=20140522-164352&fileName=000057.jpg [32m200 [90m5ms[0m
+/home/media/dkapm1/15/20140522-164352/000056.jpg
+[90mGET /image/showImg?devDirName=15&dateDirName=20140522-164352&fileName=000056.jpg [32m200 [90m6ms[0m
+[90mGET /ipcs/dirList/devOnlineListJson [32m200 [90m12390ms - 274b[0m
+[90mGET /ipcs/dirList/devOnlineListJson [32m200 [90m14428ms - 274b[0m
+[90mGET /ipcs/dirList/devOnlineListJson [32m200 [90m13407ms - 274b[0m
+Sending SIGHUP to child...
