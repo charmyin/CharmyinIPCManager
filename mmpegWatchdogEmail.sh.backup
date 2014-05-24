@@ -39,23 +39,10 @@ do
 	let "timeDifference=currentTime - latestDirModiTime"
         resultString="$ipNum true"
 	if [ "$timeDifference" -gt "$timeStopedRestart" ]; then
-            resultString="$ipNum false"
+              
+                resultString="$ipNum false"
 	fi
 
-        #echo $line1
-       if [[ -e ${pipeProgramPath}pids/${ipNum}.pids ]]; then 
-        while read line1; do
-          if [[ -n "$line1" ]]; then
-            mainPid=`pstree -p | grep "sudo(${line1})---"`
-            if [ -z "$mainPid" ]; then
-               resultString="$ipNum false"
-
-            fi
-          fi
-        done < ${pipeProgramPath}pids/${ipNum}.pids
-       else
-            resultString="$ipNum false"
-       fi
 	echo $resultString
 	
 	#at now +1 minutes <<< "sudo ./restart.sh $ipNum"

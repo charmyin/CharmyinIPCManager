@@ -66,9 +66,9 @@
 
                       if(eval(data[i].isOnline)){
                           isOnlineString = "在线";
-                          $("button").show();
+                          $("#operateBtn"+data[i].ipAddress.split(".")[3]).find("button").show();
                       }else{
-                          $("button").hide();
+                          $("#operateBtn"+data[i].ipAddress.split(".")[3]).find("button").hide();
                       }
 
                       $("#tdOnline"+data[i].ipAddress.split(".")[3]).html(isOnlineString);

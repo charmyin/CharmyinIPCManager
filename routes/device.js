@@ -79,10 +79,14 @@ exports.startIPC = function(req, res){
     child = exec(execCommand,
         function (error, stdout, stderr) {
             if (error !== null) {
-                res.json({success:true});
+                //res.json({success:true});
             }else{
-                res.json({success:false});
+               // res.json({success:false});
             }
 
         });
+    setTimeout(function() {
+        res.json({success:false});
+    }, 5000);
+
 }
