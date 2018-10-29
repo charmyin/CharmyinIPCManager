@@ -68,11 +68,31 @@
                           isOnlineString = "在线";
                           $("#operateBtn"+data[i].ipAddress.split(".")[3]).find("button").show();
                       }else{
+                          var ipAddressShort=data[i].ipAddress.split(".")[3];
                           $("#operateBtn"+data[i].ipAddress.split(".")[3]).find("button").hide();
+                          var onwork=$("#tdOnWork"+data[i].ipAddress.split(".")[3]).text();
+                          if(onwork=="拍摄中"){
+                              $("#operateBtn"+ipAddressShort).html('<button type="button" class="btn btn-danger btn-xs" onclick="javascript:stopIPC('+ipAddressShort+');">停止</button>');
+                          }
                       }
 
                       $("#tdOnline"+data[i].ipAddress.split(".")[3]).html(isOnlineString);
                   }
+              };
+
+
+
+              var changeOutofTimeStatus = function(data){
+
+                  for(var i=0; i<data.length; i++){
+                      if(eval(data[i].isRunOutOfTime)){
+                          var onwork=$("#tdOnWork"+data[i].ipAddressShort).text();
+                          if(onwork=="拍摄中"){
+                              $('<span class="label label-danger">拍摄超时</span>').insertAfter("#tdOnWork"+data[i].ipAddressShort);
+                          }
+                      }
+                  }
+
               };
 
               var changeOnWorkState = function(data){
@@ -113,6 +133,11 @@
               //ipc拍照状态
               $.ajax("/ipcs/dirList/appWorkingStatusJson").done(function(data){
                   changeOnWorkState(data);
+              });
+
+              //ipc拍照状态
+              $.ajax("/ipcs/dirList/isRunOutOfTime").done(function(data){
+                  changeOutofTimeStatus(data);
               });
 
 

@@ -26,23 +26,15 @@ done < /etc/ipcs.info
 for ipcConfigLine in "${ipcConfigLineArray[@]}"
 do
 	#Get config file info
-	#ipcConfigArray=($(echo $ipcConfigLine | tr ";" "\n"))
 	IFS=';' read -ra ipcConfigArray <<< "$ipcConfigLine"
 	ipNum=${ipcConfigArray[0]}
-	#Show time difference between latest directory modified time and current time
-	latestDirName=`ls $imageSaveMainDir$ipNum | sort -nr | head -1`
-#	echo "ls $imageSaveMainDir$ipNum | sort -nr | head -1"
-#	echo latestDirName is $latestDirName
-	latestDirModiTime=`date --utc --reference=$imageSaveMainDir${ipNum}/$latestDirName +%s`
-	currentTime=`date --utc +%s`
-	let "timeDifference=currentTime - latestDirModiTime"
-        #Is run out of time
-        resultString="$ipNum false"
-	if [ "$timeDifference" -gt "$timeStopedRestart" ]; then
+       #if related program is running , it shows true; if none of the related program is running , it return false;
+       if [[ -n "`pstree | grep main${ipNum}`" || -n "`pstree | grep ffmpeg${ipNum}`"  ]]; then 
             resultString="$ipNum true"
-	fi
-
-	echo $resultString
+       else
+            resultString="$ipNum false"
+       fi
+       echo $resultString
 	
 	#at now +1 minutes <<< "sudo ./restart.sh $ipNum"
 done

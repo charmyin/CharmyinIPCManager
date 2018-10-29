@@ -42,8 +42,10 @@ app.get('/ipcs/dirList/imgListJson', dirList.imgListJson);
 app.get('/ipcs/dirList/devListJson', routes.devListJson);
 app.get('/ipcs/dirList/devOnlineListJson', device.devOnlineListJson);
 app.get('/ipcs/dirList/appWorkingStatusJson', device.appWorkingStatusJson);
+app.get('/ipcs/dirList/isRunOutOfTime', device.isRunOutOfTime);
 app.get('/ipcs/dirList/stopIPC', device.stopIPC);
 app.get('/ipcs/dirList/startIPC', device.startIPC);
+
 
 
 http.createServer(app).listen(app.get('port'), function(){
